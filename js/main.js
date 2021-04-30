@@ -31,4 +31,21 @@ $(function(){
     }
     showPreloaderText()
 
+
+    $("[data-scroll]").on('click', function(event) {
+        event.preventDefault()
+
+        let elementID = $(this).data('scroll')
+        let elementOffset = $(elementID).offset().top
+
+        if(burger.hasClass('active')){
+            nav.removeClass('active')
+            burger.removeClass('active')
+        }
+
+            $('html, body').animate({
+                scrollTop: elementOffset,
+            }, 700)
+    })
+
 });

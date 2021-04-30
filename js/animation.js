@@ -46,9 +46,9 @@ document.body.onload= function() {
                 window.addEventListener('resize', checkNav)
 
                 function checkNav() {
-                    if (document.documentElement.clientWidth < 860) {
+                    if (document.documentElement.clientWidth < 950) {
                         const header = document.getElementById('header')
-                        header.classList.remove('_anim')
+                        header.classList.add('_anim-no-hide')
                     }
                 }
 
