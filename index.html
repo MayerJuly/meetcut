@@ -31,24 +31,24 @@
 
   <div class="wrapper">
     <!--HEADER-->
-    <header class="header">
+    <header class="header" id="intro">
       <div class="container">
         <div class="header__top _anim" id="header">
           <div class="header__logo">
             <img src="images/Logo.png" alt="Logo">
           </div>
           <nav class="header__nav">
-            <a class="nav__item"  data-scroll="#services">Цены</a>
-            <a class="nav__item"  data-scroll="#gallery">Галерея</a>
-            <a class="nav__item"  data-scroll="#contacts">Контакты</a>
+            <a class="nav__item" href="#"  data-scroll="#services">Цены</a>
+            <a class="nav__item" href="#" data-scroll="#gallery">Галерея</a>
+            <a class="nav__item" href="#" data-scroll="#contacts">Контакты</a>
           </nav>
           <div class="header__burger">
             <span></span>
           </div>
         </div>
         <div class="header__content">
-          <div class="header__button">
-            <button type="submit"><span class="header__button-text">Записаться</span></button>
+          <div class="header__button" id="order">
+            <button type="submit" class="js-button-popup" ><span class="header__button-text">записаться</span></button>
           </div>
         </div>
       </div>
@@ -134,6 +134,36 @@
       </div>
     </footer>
   </div>
+
+
+<!-- MODAL -->
+
+<div class="overlay js-overlay">
+  <div class="popup js-popup">
+    <div class="popup__content">
+      <div class="popup__content-title">
+        <h2>напишите нам</h2>
+      </div>
+      <form class="form"  action="" id="form">
+        <div class="form__control">
+          <label for="username">имя</label>
+          <input type="text" placeholder="Ваше имя" id="username">
+          <small>Error Message</small>
+        </div>
+        <div class="form__control">
+          <label for="phone">номер телефона</label>
+          <input type="text" placeholder="Ваш номер телефона" id="phone">
+          <small>Error Message</small>
+        </div>
+
+        <button class="submit">отправить</button>
+      </form>
+
+    </div>
+    <div class="close__popup js-close-popup">&times;</div>
+
+  </div>
+</div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="js/animation.js"> </script>

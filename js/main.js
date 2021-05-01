@@ -48,4 +48,113 @@ $(function(){
             }, 700)
     })
 
+// //    Fixed button
+//
+//     let header = $('#header')
+//     let intro = $('#intro')
+//     let orderButton = $('#order')
+//
+//     let introH = intro.innerHeight()
+//     let scrollPos = $(window).scrollTop()
+//
+//     checkScroll(scrollPos,introH)
+//
+//     $(window).on('scroll resize ', () => {
+//         introH = intro.innerHeight()
+//         scrollPos = $(this).scrollTop()
+//         checkScroll(scrollPos,introH)
+//     })
+//
+//     function checkScroll(scrollPos, introH) {
+//         if(scrollPos > introH){
+//             orderButton.addClass('fixed')
+//         } else{
+//             orderButton.removeClass('fixed')
+//         }
+//     }
+
+
+    //    Modal
+
+    const close = $('.js-close-popup')
+    const modalOverlay = $('.overlay')
+    const popup = $('.js-popup')
+    const form = document.getElementById('form')
+    const username = document.getElementById('username')
+    const phone = document.getElementById('phone')
+
+
+    function closeModal(close,object) {
+        close.click(function (){
+            object.removeClass('active')
+        })
+    }
+
+
+    function closeModalOverlay(popup,object){
+        $(document).mousedown(function (e) {
+            if (e.target !== popup[0] && popup.has(e.target).length === 0) {
+                object.removeClass('active')
+            }
+        })
+    }
+
+    $('.js-button-popup').click(function (){
+        modalOverlay.addClass('active')
+    })
+
+    closeModal(close,modalOverlay)
+    closeModalOverlay(popup,modalOverlay)
+
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault()
+
+        checkInputs();
+    })
+
+    function checkInputs(){
+    //    get values from inputs
+        const usernameValue = username.value.trim()
+        const phoneValue = phone.value.trim()
+        let error = false
+
+        if(usernameValue === ''){
+            setErrorFor(username, 'Введите ваше имя')
+            error = true
+
+        } else{
+            setSuccessFor(username)
+        }
+
+        if(phoneValue === ''){
+            setErrorFor(phone, 'Введите ваш номер телефона')
+            error = true
+
+        } else{
+            setSuccessFor(phone)
+        }
+
+        if(!error){
+                setTimeout(()=>{
+                    modalOverlay.removeClass('active')
+                    alert('Успешно отправлено')
+                },1500)
+        }
+    }
+
+    function setErrorFor(input,message){
+        const formControl = input.parentElement // .form__control
+        const small = formControl.querySelector('small')
+
+        // add error message
+        small.innerText = message
+        // add error class
+        formControl.classList.add('error')
+    }
+
+    function setSuccessFor(input){
+        const formControl = input.parentElement // .form__control
+        formControl.classList.remove('error')
+    }
+
 });
