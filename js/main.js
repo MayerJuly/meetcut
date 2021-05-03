@@ -130,7 +130,11 @@ $(function(){
             setErrorFor(phone, 'Введите ваш номер телефона')
             error = true
 
-        } else{
+        } else if(!validatePhone(phoneValue)){
+            setErrorFor(phone, 'Неккоректный ввод номера телефона')
+            error = true
+        }
+        else{
             setSuccessFor(phone)
         }
 
@@ -138,7 +142,9 @@ $(function(){
                 setTimeout(()=>{
                     modalOverlay.removeClass('active')
                     alert('Успешно отправлено')
+                    form.reset()
                 },1500)
+
         }
     }
 
@@ -155,6 +161,11 @@ $(function(){
     function setSuccessFor(input){
         const formControl = input.parentElement // .form__control
         formControl.classList.remove('error')
+    }
+
+    function validatePhone(phone){
+        let regex = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+        return regex.test(phone);
     }
 
 });
