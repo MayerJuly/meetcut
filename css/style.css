@@ -727,7 +727,7 @@ a{
     }
      .header__button{
          left: 50%;
-         top: 60%;
+         top: 90%;
          transform: translateX(-50%);
          width:300px;
          max-width:100%;
